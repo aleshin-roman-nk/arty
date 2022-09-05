@@ -1,0 +1,12 @@
+D:\Samples\Arty\Arty.Services\bin\Debug\net6.0\Arty.Services.deps.json
+D:\Samples\Arty\Arty.Services\bin\Debug\net6.0\Arty.Services.dll
+D:\Samples\Arty\Arty.Services\bin\Debug\net6.0\Arty.Services.pdb
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.csproj.AssemblyReference.cache
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.AssemblyInfoInputs.cache
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.AssemblyInfo.cs
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.csproj.CoreCompileInputs.cache
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.dll
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\refint\Arty.Services.dll
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\Arty.Services.pdb
+D:\Samples\Arty\Arty.Services\obj\Debug\net6.0\ref\Arty.Services.dll

@@ -1,0 +1,14 @@
+﻿@page
+@model Arty.Pages.TestPageModel
+@{
+}
+
+
+Here are areas<br>
+
+@foreach(var item in Model.DataObj){
+    foreach(var o in item.Strings){
+        @o<br>
+    }
+    <hr/>
+}
