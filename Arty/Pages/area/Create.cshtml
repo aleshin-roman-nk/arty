@@ -1,0 +1,55 @@
+﻿@page "{handler?}/{msg?}/{ferr?}"
+@model Arty.Pages.area.CreateModel
+@{
+}
+
+@if (!string.IsNullOrEmpty(Model.err))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.err
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.msg))
+{
+    <div class="alert alert-success" role="alert">
+        @Model.msg
+    </div>
+}
+
+@if (Model.PageMode == 0)
+{
+
+    <form method="post" name="mainForm">
+        <textarea asp-for="SourceText" class="form-control" rows="15"></textarea>
+        @*<button type="submit" class="btn btn-link" onclick="submitForm()">Parse</button>*@
+        <button type="submit" class="btn btn-link">Parse</button>
+    </form>
+
+    <p style="white-space: pre-line;">
+        @Model.ResultText
+    </p>
+
+}
+else{
+
+}
+
+
+
+
+@*@section Scripts{
+    <script>
+        function submitForm() {
+            // Get the first form with the name
+            // Hopefully there is only one, but there are more, select the correct index
+            var frm = document.getElementsByName('mainForm')[0];
+            frm.submit(); // Submit
+
+            //document.getElementById('SourceText').value = '';
+
+            frm.reset();  // Reset
+            return false; // Prevent page refresh
+        }
+    </script>
+}*@

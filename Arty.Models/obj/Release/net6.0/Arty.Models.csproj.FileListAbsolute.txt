@@ -1,0 +1,12 @@
+d:\prg\Arty\Arty.Models\bin\Release\net6.0\Arty.Models.deps.json
+d:\prg\Arty\Arty.Models\bin\Release\net6.0\Arty.Models.dll
+d:\prg\Arty\Arty.Models\bin\Release\net6.0\Arty.Models.pdb
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.csproj.AssemblyReference.cache
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.GeneratedMSBuildEditorConfig.editorconfig
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.AssemblyInfoInputs.cache
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.AssemblyInfo.cs
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.csproj.CoreCompileInputs.cache
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.dll
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\refint\Arty.Models.dll
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\Arty.Models.pdb
+d:\prg\Arty\Arty.Models\obj\Release\net6.0\ref\Arty.Models.dll

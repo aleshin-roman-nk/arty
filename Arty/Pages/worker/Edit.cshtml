@@ -1,0 +1,75 @@
+﻿@page "{handler}/{id?}"
+@model Arty.Pages.worker.EditModel
+@{
+}
+
+<style>
+    .container {
+        grid-template-columns: 100px 400px;
+        display: grid;
+        grid-gap: 10px;
+    }
+
+    .item-label {
+        padding: 10px;
+        /*border: 1px solid black;*/
+    }
+
+    .item-value {
+        padding: 10px;
+        /*border: 1px solid black;*/
+    }
+
+    .item-label-title {
+        padding: 10px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        /*border: 1px solid black;*/
+    }
+
+</style>
+
+<form method="post">
+    <div class="container">
+        @if (Model.error != null)
+        {
+            <div class="item-label-title alert alert-danger">@Model.error</div>
+            <a asp-page="/area/detail" asp-route-id="@Model.Worker.areaId" class="btn btn-link">back</a>
+        }
+        else{
+
+            <input type="hidden" asp-for="@Model.Worker.areaId" />
+            <input type="hidden" asp-for="@Model.Worker.id" />
+
+            <div class="item-label">Возвещатель</div>
+            <div class="item-value">
+                <input asp-for="@Model.Worker.name" class="form-control" type="text">
+            </div>
+
+            <div class="item-label">Дата выдачи</div>
+            <div class="item-value">
+                <input asp-for="@Model.Worker.start" class="form-control" type="date">
+            </div>
+
+            @if (Model.editMode == EntityEditMode.edit)
+            {
+                <div class="item-label">Дата возврата</div>
+                <div class="item-value"><input asp-for="@Model.Worker.finish" class="form-control" type="date"></div>
+            }
+
+            <div class="item-label-title">
+                <a asp-page="/area/detail" asp-route-id="@Model.Worker.areaId" class="btn btn-link">back</a>
+                <button type="submit" class="btn btn-link">Save</button>
+                @if (Model.editMode == EntityEditMode.edit)
+                {
+                    <button type="submit" asp-page-handler="Delete" class="btn btn-outline-danger">Delete</button>
+                }
+            </div>
+
+        }
+
+
+
+    </div>
+
+</form>

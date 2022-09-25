@@ -1,0 +1,41 @@
+﻿@page
+@model Arty.Pages.Territory.IndexModel
+@{
+}
+
+@*<a asp-page="/area/index" class="btn btn-link">personal territories</a>*@
+
+<style>
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        display: grid;
+        grid-gap: 10px;
+    }
+
+    .item {
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .item-center{
+        text-align:center;
+    }
+</style>
+
+<div class="container">
+
+    @foreach (var item in Model.Territories)
+    {
+        <div class="item">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <a asp-page="/area/index" asp-route-id="@item.Id" class="btn btn-outline-secondary p-1 m-1">...</a>
+                    <div class="card-body item-center">
+                        <h4><b>@item.Name</b></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>

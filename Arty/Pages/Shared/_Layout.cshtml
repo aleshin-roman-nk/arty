@@ -23,18 +23,23 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/TestPage">TestPage</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/territory/index">Territory</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/area/create">Create area</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    @*<div class="container">*@
+        @*<main role="main" class="pb-3">*@
             @RenderBody()
-        </main>
-    </div>
+        @*</main>*@
+    @*</div>*@
 
     <footer class="border-top footer text-muted">
         <div class="container">

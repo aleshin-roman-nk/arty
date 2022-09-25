@@ -1,0 +1,15 @@
+d:\prg\Arty\Arty.Services\bin\Release\net6.0\Arty.Services.deps.json
+d:\prg\Arty\Arty.Services\bin\Release\net6.0\Arty.Services.dll
+d:\prg\Arty\Arty.Services\bin\Release\net6.0\Arty.Services.pdb
+d:\prg\Arty\Arty.Services\bin\Release\net6.0\Arty.Models.dll
+d:\prg\Arty\Arty.Services\bin\Release\net6.0\Arty.Models.pdb
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.csproj.AssemblyReference.cache
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.GeneratedMSBuildEditorConfig.editorconfig
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.AssemblyInfoInputs.cache
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.AssemblyInfo.cs
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.csproj.CoreCompileInputs.cache
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.csproj.CopyComplete
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.dll
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\refint\Arty.Services.dll
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\Arty.Services.pdb
+d:\prg\Arty\Arty.Services\obj\Release\net6.0\ref\Arty.Services.dll

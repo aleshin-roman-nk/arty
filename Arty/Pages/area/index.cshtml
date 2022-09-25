@@ -1,0 +1,129 @@
+﻿@page "{id}"
+@using Arty.Models
+@model Arty.Pages.area.indexModel
+@{
+    string getColorState(AreaState state)
+    {
+        if (state == AreaState.inRest) return "#F8FF89";
+        if (state == AreaState.readyToStart) return "#ADFFA2";
+        return "#FFAEAE";
+    }
+
+    //string getStyleShining(AreaState state)
+    //{
+    //    string cl = null;
+
+    //    if (state == AreaState.inRest) cl = "#F8FF89";
+    //    if (state == AreaState.readyToStart) cl = "#ADFFA2";
+    //    cl = "#FFAEAE";
+
+    //    return $"style = \"border-color:#4C4C4C; box-shadow:0 0 10px {cl};\"";
+            //}
+
+}
+
+@if (!string.IsNullOrEmpty(Model.message))
+{
+    <div class="alert alert-info" role="alert">
+        @Model.message
+    </div>
+}
+
+<style>
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        display: grid;
+        grid-gap: 10px;
+    }
+
+    .item {
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .area-in-work {
+        background-color: #FFAEAE;
+    }
+
+    .area-in-rest {
+        background-color: #F8FF89;
+    }
+
+    .area-ready {
+        background-color: #ADFFA2;
+    }
+
+</style>
+
+
+<a asp-page="/territory/index" class="btn btn-outline-secondary">return</a>
+
+<div class="container">
+
+
+    @foreach (var item in Model.DataObj)
+    {
+
+        <div>
+            <div class="card-deck">
+                <div class="card m-3" style="border-color:#4C4C4C; box-shadow:0 0 10px @(getColorState(item.StateCode));">
+                    <a asp-page="detail" asp-route-id="@item.Id" class="btn btn-outline-secondary p-1 m-1">...</a>
+
+                    <h5 class="card-header">Номер участка : <b>@item.Number</b></h5>
+
+                    @*                    @if (item.Worker != null)
+                {
+
+                @if (item.Worker.finish != null)
+                {
+                <h6 class="card-header area-in-rest">Возвращен : <b>@item.Worker.finish?.ToShortDateString()</b></h6>
+                }
+                else if (item.Worker.start != null)
+                {
+                <h6 class="card-header area-in-work">Выдан : <b>@item.Worker.start?.ToShortDateString()</b> (@item.Worker.name)</h6>
+                }
+                }
+                else{
+                <h6 class="card-header area-never-given"><i>Участок не выдавался</i></h6>
+                }*@
+
+                    @if (item.StateCode == AreaState.inRest)
+                    {
+                        <h6 class="card-header area-in-rest">Возвращен : <b>@item.Worker.finish?.ToShortDateString()</b> (на отдыхе)</h6>
+                    }
+                    else if (item.StateCode == AreaState.working)
+                    {
+                        <h6 class="card-header area-in-work">Выдан : <b>@item.Worker.start?.ToShortDateString()</b> (@item.Worker.name)</h6>
+                    }
+                    else
+                    {
+                        <h6 class="card-header area-ready"><i>Готов к работе</i></h6>
+                    }
+
+                    @if (!string.IsNullOrEmpty(item.AreaType))
+                    {
+                        <h8 class="card-header"><b>@item.AreaType</b></h8>
+                    }
+
+                    <h8 class="card-header"><b>@item.formula</b></h8>
+
+
+
+                    <div class="card-body">
+
+                        <ul class="list-group list-group-flush">
+
+                            @foreach (var arrd in item.areaLines)
+                            {
+                                <li class="list-group-item">@arrd.data</li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>

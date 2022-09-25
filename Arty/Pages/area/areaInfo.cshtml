@@ -1,0 +1,38 @@
+﻿@page "{id}"
+@model Arty.Pages.area.areaInfoModel
+@{
+}
+
+<style>
+    .grid{
+        grid-template-columns: 1fr 1fr 1fr;
+        display: grid;
+        grid-gap: 10px;
+    }
+
+    .item{
+        padding: 10px;
+        /*border: 1px solid black;*/
+
+    }
+</style>
+
+<form method="post">
+    <input type="hidden" asp-for="Area.Id" />
+    <div class="grid">
+
+        <div class="item">
+
+            <textarea asp-for="Area.info" class="form-control" rows="15">@Model.Area.info</textarea>
+        </div>
+
+        <div class="item">
+            <a asp-page="/area/detail" asp-route-id="@Model.Area.Id" class="btn btn-link">back</a>
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+
+
+    </div>
+
+
+</form>

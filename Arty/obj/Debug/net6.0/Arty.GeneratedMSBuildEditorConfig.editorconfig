@@ -8,41 +8,61 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Arty
 build_property.RootNamespace = Arty
-build_property.ProjectDir = D:\Samples\Arty\Arty\
+build_property.ProjectDir = D:\prg\Arty\Arty\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Samples\Arty\Arty
+build_property.MSBuildProjectDirectory = D:\prg\Arty\Arty
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Samples/Arty/Arty/Pages/Error.cshtml]
+[D:/prg/Arty/Arty/Pages/area/areaInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYXJlYVxhcmVhSW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prg/Arty/Arty/Pages/area/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYXJlYVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prg/Arty/Arty/Pages/area/detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYXJlYVxkZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prg/Arty/Arty/Pages/area/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcYXJlYVxpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prg/Arty/Arty/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/Index.cshtml]
+[D:/prg/Arty/Arty/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/Privacy.cshtml]
+[D:/prg/Arty/Arty/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[D:/prg/Arty/Arty/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/TestPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFBhZ2UuY3NodG1s
+[D:/prg/Arty/Arty/Pages/Territory/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVycml0b3J5XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/_ViewImports.cshtml]
+[D:/prg/Arty/Arty/Pages/worker/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcd29ya2VyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/prg/Arty/Arty/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/_ViewStart.cshtml]
+[D:/prg/Arty/Arty/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Samples/Arty/Arty/Pages/Shared/_Layout.cshtml]
+[D:/prg/Arty/Arty/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-8di24r90z9

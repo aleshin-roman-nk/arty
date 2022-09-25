@@ -1,0 +1,136 @@
+﻿@page "{id}"
+@model Arty.Pages.area.detailModel
+@{
+}
+
+<style>
+    .container {
+        grid-template-columns: 450px 350px 350px;
+        display: grid;
+        grid-gap: 10px;
+    }
+
+    .workercontainer {
+        grid-template-columns: 150px 150px;
+        display: grid;
+        grid-gap: 1px;
+    }
+
+    .item {
+        padding: 10px;
+        border: 1px solid black;
+    }
+
+    .item-scroll {
+        padding: 10px;
+        border: 1px solid black;
+        overflow: scroll;
+    }
+
+    .item-noborder {
+        padding: 10px;
+        /*border: 1px solid black;*/
+    }
+
+    .item-start-work {
+        padding: 2px;
+        border: 1px solid black;
+        text-align: center;
+        background-color: #67E667;
+    }
+
+    .item-finish-work {
+        padding: 2px;
+        border: 1px solid black;
+        text-align: center;
+        background-color: #33CCCC;
+    }
+
+    .item-notcompleted-work {
+        padding: 2px;
+        border: 1px solid black;
+        text-align: center;
+        background-color: #F9E79F;
+    }
+
+    .item-full {
+        /*padding: 10px;*/
+        /*border: 1px solid black;*/
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .item-worker-title {
+        padding: 2px;
+        border: 1px solid black;
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        background-color: #EAF2F8;
+    }
+
+</style>
+
+
+
+
+<div class="container">
+    <div class="item">
+
+        <div class="card-deck">
+            <div class="card" style="border-color:#4C4C4C;">
+                <h5 class="card-header">Номер участка : <b>@Model.Area.Number</b></h5>
+                <h8 class="card-header"><b>@Model.Area.AreaType</b></h8>
+                <div class="card-body">
+                    <h6 class="card-title">@Model.Area.formula</h6>
+
+                    <ul class="list-group list-group-flush">
+
+                        @foreach (var arrd in Model.Area.areaLines)
+                        {
+                            <li class="list-group-item">@arrd.data</li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="item-scroll">
+
+        <div class="item-noborder">
+            <a asp-page="/worker/edit" asp-page-handler="create" asp-route-id="@Model.Area.Id" class="btn btn-link">Выдать</a>
+        </div>
+
+        @*<label for="start">Start date:</label>*@
+
+        @*        <input type="date" id="start" name="trip-start">*@
+
+        <div class="workercontainer">
+
+            @foreach (var worker in Model.Workers)
+            {
+                <div class="item-worker-title">
+                    <a asp-page="/worker/edit" asp-page-handler="edit" asp-route-id="@worker.id" class="btn btn-link">@worker.name</a>
+                </div>
+                <div class="item-start-work">@worker.start?.ToShortDateString()</div>
+                <div class="item-notcompleted-work">@worker.finish?.ToShortDateString()</div>
+
+                <div class="item-full"><hr /></div>
+            }
+
+        </div>
+
+
+    </div>
+
+    <div class="item">
+        <a class = "btn btn-link" asp-page="/area/areainfo" asp-route-id="@Model.Area.Id">edit</a>
+        <p style="white-space: pre-line;">
+            @Model.Area.info
+        </p>
+    </div>
+
+</div>

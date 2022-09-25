@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Samples\\Arty\\Arty.Models\\Arty.Models.csproj": {}
+    "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj": {}
   },
   "projects": {
-    "D:\\Samples\\Arty\\Arty.Models\\Arty.Models.csproj": {
+    "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Samples\\Arty\\Arty.Models\\Arty.Models.csproj",
+        "projectUniqueName": "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj",
         "projectName": "Arty.Models",
-        "projectPath": "D:\\Samples\\Arty\\Arty.Models\\Arty.Models.csproj",
+        "projectPath": "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj",
         "packagesPath": "C:\\Users\\alesh\\.nuget\\packages\\",
-        "outputPath": "D:\\Samples\\Arty\\Arty.Models\\obj\\",
+        "outputPath": "D:\\prg\\Arty\\Arty.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
