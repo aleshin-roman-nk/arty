@@ -35,14 +35,14 @@ namespace Arty.Models
 
 
         public int? workerId { get; set; }
-        public AreaWorker? Worker { get; set; }
+        public Worker? Worker { get; set; }
 
         public AreaState StateCode
         {
             get
             {
                 // is at rest if less than six months have passed since the date of return
-                if (Worker == null) return AreaState.readyToStart;
+                if (Worker == null) return AreaState.neverBeenWorked;
 
                 // returned to rest
                 if (Worker.finish != null)
@@ -50,20 +50,17 @@ namespace Arty.Models
                     var passed = DateTime.Today - Worker.finish;
                     if (passed?.TotalDays >= 30 * 6)
                     {
-
-                        return AreaState.readyToStart;
+                        return AreaState.readyToStartWorked;
                     }
                     else return AreaState.inRest;
                 }
 
-                if (Worker.start != null) return AreaState.working;
-
-                return AreaState.readyToStart;
+				// anyway if Worker != null the pterritory is under work
+				return AreaState.working;
             }
-
 
         }
     }
 
-    public enum AreaState { working, inRest, readyToStart }
+    public enum AreaState { working, inRest, neverBeenWorked, readyToStartWorked }
 }

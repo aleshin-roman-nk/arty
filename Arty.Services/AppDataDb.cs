@@ -20,9 +20,10 @@ namespace Arty.Services
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite($"Filename={_path}");
-            //optionsBuilder.LogTo(Console.WriteLine);
-            //optionsBuilder.EnableSensitiveDataLogging(true);
-        }
+			
+			//optionsBuilder.LogTo(Console.WriteLine);
+			//optionsBuilder.EnableSensitiveDataLogging(true);
+		}
 
         public AppDataDb Create()
         {
@@ -31,7 +32,8 @@ namespace Arty.Services
 
         public DbSet<PersonalTerritory> PersonalTerritories { get; set; }
         public DbSet<AreaLine> Lines { get; set; }
-        public DbSet<AreaWorker> Workers { get; set; }
+        public DbSet<Worker> Workers { get; set; }
         public DbSet<Territory> Territories { get; set; }
+        public DbSet<AppProperty> AppProperties { get; set; }
     }
 }

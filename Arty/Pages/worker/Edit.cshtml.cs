@@ -9,13 +9,13 @@ namespace Arty.Pages.worker
     {
         AppDataDb _appDataDb;
         WorkerRepo workerRepo;
-        AreaRepo areaRepo;
+        PTerritoryRepo areaRepo;
 
         public EditModel()
         {
             _appDataDb = new AppDataDb(@"..\db\arty.db");
             workerRepo = new WorkerRepo(_appDataDb);
-            areaRepo = new AreaRepo(_appDataDb);
+            areaRepo = new PTerritoryRepo(_appDataDb);
         }
 
         public void OnGet()
@@ -33,7 +33,7 @@ namespace Arty.Pages.worker
 
         public void OnGetCreate(int id)
         {
-            msg = $"creating under area : {id}";
+            msg = $"creating under personalTerritory : {id}";
 
             editMode = EntityEditMode.create;
 
@@ -41,7 +41,7 @@ namespace Arty.Pages.worker
             {
                 error = "Участок находится в работе. Повторная выдача невозможна";
                 //Console.WriteLine(error);
-                Worker = new AreaWorker { areaId = id };
+                Worker = new Worker { pterrID = id };
                 return;
             }
 
@@ -50,29 +50,33 @@ namespace Arty.Pages.worker
             if(a.StateCode == AreaState.inRest)
             {
                 error = "Участок находится на отдыхе";
-                Worker = new AreaWorker { areaId = id };
+                Worker = new Worker { pterrID = id };
                 return ;
             }
 
-            Worker = new AreaWorker { areaId = id, start = DateTime.Today };
+            Worker = new Worker { pterrID = id, start = DateTime.Today };
         }
 
         public IActionResult OnPost()
         {
             workerRepo.Save(Worker);
 
-            var area = new PersonalTerritory { Id = Worker.areaId, workerId = Worker.id };
+            var area = new PersonalTerritory { Id = Worker.pterrID, workerId = Worker.id };
             areaRepo.UpdateFields(area, "workerId");
 
-            return RedirectToPage("/area/detail", new { id = Worker.areaId });
+            return RedirectToPage("/personalTerritory/detail", new { id = Worker.pterrID });
         }
 
         public IActionResult OnPostDelete()
         {
             workerRepo.Delete(Worker.id);
-            var area = new PersonalTerritory { Id = Worker.areaId, workerId = null };
+
+            var w = workerRepo.GetLast(Worker.pterrID);
+
+            var area = new PersonalTerritory { Id = Worker.pterrID, workerId = w == null ? null : w.id };
+
             areaRepo.UpdateFields(area, "workerId");
-            return RedirectToPage("/area/detail", new { id = Worker.areaId });
+            return RedirectToPage("/personalTerritory/detail", new { id = Worker.pterrID });
         }
 
         public string error { get; set; }
@@ -81,6 +85,6 @@ namespace Arty.Pages.worker
         public EntityEditMode editMode { get; set; }
 
         [BindProperty]
-        public AreaWorker? Worker { get; set; }
+        public Worker? Worker { get; set; }
     }
 }

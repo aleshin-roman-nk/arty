@@ -3,18 +3,18 @@ using Arty.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Arty.Pages.area
+namespace Arty.Pages.personalTerritory
 {
     public class detailModel : PageModel
     {
         AppDataDb _appDataDb;
-        AreaRepo areaRepo;
+        PTerritoryRepo areaRepo;
         WorkerRepo workerRepo;
 
         public detailModel()
         {
             _appDataDb = new AppDataDb(@"..\db\arty.db");
-            areaRepo = new AreaRepo(_appDataDb);
+            areaRepo = new PTerritoryRepo(_appDataDb);
             workerRepo = new WorkerRepo(_appDataDb);
         }
 
@@ -26,6 +26,6 @@ namespace Arty.Pages.area
 
         [BindProperty]
         public PersonalTerritory? Area { get; set; }
-        public IEnumerable<AreaWorker> Workers { get; set; }
+        public IEnumerable<Worker> Workers { get; set; }
     }
 }

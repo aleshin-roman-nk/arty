@@ -1264,11 +1264,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\prg\\Arty\\Arty\\Arty.csproj",
+      "projectUniqueName": "d:\\prg\\arty\\Arty\\Arty.csproj",
       "projectName": "Arty",
-      "projectPath": "D:\\prg\\Arty\\Arty\\Arty.csproj",
+      "projectPath": "d:\\prg\\arty\\Arty\\Arty.csproj",
       "packagesPath": "C:\\Users\\alesh\\.nuget\\packages\\",
-      "outputPath": "D:\\prg\\Arty\\Arty\\obj\\",
+      "outputPath": "d:\\prg\\arty\\Arty\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1285,8 +1285,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\prg\\Arty\\Arty.Services\\Arty.Services.csproj": {
-              "projectPath": "D:\\prg\\Arty\\Arty.Services\\Arty.Services.csproj"
+            "d:\\prg\\arty\\Arty.Services\\Arty.Services.csproj": {
+              "projectPath": "d:\\prg\\arty\\Arty.Services\\Arty.Services.csproj"
             }
           }
         }
@@ -1319,7 +1319,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

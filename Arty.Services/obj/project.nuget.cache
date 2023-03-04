@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g6wqnZf/KV11ddxvcp3z6q2jmMZwUf9+Rl4IOQi4s30qFWAQDj45jd33IRjL9bxzZrxaCXHd+ftXIBmUjYZ4dQ==",
+  "dgSpecHash": "NxOTG6VZ5mqvZDZAlPkBJKaAlneE4wNFEGvtM6Afyl15F97oMeR9z3QoBspOkDL8MZmGahzj28Y05v9xtiPWjQ==",
   "success": true,
-  "projectFilePath": "D:\\prg\\Arty\\Arty.Services\\Arty.Services.csproj",
+  "projectFilePath": "d:\\prg\\arty\\Arty.Services\\Arty.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alesh\\.nuget\\packages\\microsoft.data.sqlite\\6.0.9\\microsoft.data.sqlite.6.0.9.nupkg.sha512",
     "C:\\Users\\alesh\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.9\\microsoft.data.sqlite.core.6.0.9.nupkg.sha512",

@@ -3,17 +3,17 @@ using Arty.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Arty.Pages.area
+namespace Arty.Pages.personalTerritory
 {
     public class areaInfoModel : PageModel
     {
         AppDataDb _appDataDb;
-        AreaRepo areaRepo;
+        PTerritoryRepo areaRepo;
 
         public areaInfoModel()
         {
             _appDataDb = new AppDataDb(@"..\db\arty.db");
-            areaRepo = new AreaRepo(_appDataDb);
+            areaRepo = new PTerritoryRepo(_appDataDb);
         }
 
         public void OnGet(int id)
@@ -24,7 +24,7 @@ namespace Arty.Pages.area
         public IActionResult OnPost()
         {
             areaRepo.UpdateFields(Area, "info");
-            return RedirectToPage("/area/detail", new { id = Area.Id });
+            return RedirectToPage("/personalTerritory/detail", new { id = Area.Id });
         }
 
         [BindProperty]

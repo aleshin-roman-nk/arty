@@ -1,0 +1,16 @@
+﻿@page
+@model Arty.Pages.worker.workingModel
+@{
+}
+
+@foreach (var item in Model.Workers)
+{
+    <a class="btn btn-link" asp-page="/personalTerritory/detail" asp-route-id="@item.PersonalTerritory.Id">
+        <b>@item.name</b> / @item.PersonalTerritory?.Number / @item.start?.ToShortDateString()
+    </a>
+}
+
+@*<pre>
+    @Model.WorkersJson
+
+</pre>*@

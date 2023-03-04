@@ -1,0 +1,21 @@
+﻿@page
+@model Arty.Pages.srvToolsModel
+@{
+}
+
+
+@if (!string.IsNullOrEmpty(Model.msg))
+{
+    <div class="alert alert-info" role="alert">
+        @Model.msg
+    </div>
+}
+
+<a asp-page-handler="UpperAllAdresses" class="btn btn-info">upper adresses</a>
+<a asp-page="/personalTerritory/attachTerritory" class="btn btn-info">присвоить участки территории</a>
+<a asp-page="/personalTerritory/create" class="btn btn-info">Создать участок</a>
+<a asp-page="/personalTerritory/index" asp-route-id="0" class="btn btn-info">
+    Показать участки без территории
+</a>
+
+<a asp-page="/tool/exportStdFormat" class="btn btn-info">Стандртный формат</a>

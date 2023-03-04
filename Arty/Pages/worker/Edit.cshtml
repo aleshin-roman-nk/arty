@@ -34,11 +34,11 @@
         @if (Model.error != null)
         {
             <div class="item-label-title alert alert-danger">@Model.error</div>
-            <a asp-page="/area/detail" asp-route-id="@Model.Worker.areaId" class="btn btn-link">back</a>
+            <a asp-page="/personalTerritory/detail" asp-route-id="@Model.Worker.pterrID" class="btn btn-link">back</a>
         }
         else{
 
-            <input type="hidden" asp-for="@Model.Worker.areaId" />
+            <input type="hidden" asp-for="@Model.Worker.pterrID" />
             <input type="hidden" asp-for="@Model.Worker.id" />
 
             <div class="item-label">Возвещатель</div>
@@ -58,7 +58,7 @@
             }
 
             <div class="item-label-title">
-                <a asp-page="/area/detail" asp-route-id="@Model.Worker.areaId" class="btn btn-link">back</a>
+                <a asp-page="/personalTerritory/detail" asp-route-id="@Model.Worker.pterrID" class="btn btn-link">back</a>
                 <button type="submit" class="btn btn-link">Save</button>
                 @if (Model.editMode == EntityEditMode.edit)
                 {

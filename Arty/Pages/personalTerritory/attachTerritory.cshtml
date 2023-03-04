@@ -1,0 +1,22 @@
+﻿@page
+@model Arty.Pages.personalTerritory.attachTerritoryModel
+@{
+}
+
+@if (!string.IsNullOrEmpty(Model.err))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.err
+    </div>
+}
+
+<form method="post">
+    <label asp-for="@Model.PersTerrFrom">Начиная с</label>
+    <input asp-for="@Model.PersTerrFrom" type="text" />
+    <label asp-for="@Model.PersTerrTo">Заканчивая</label>
+    <input asp-for="@Model.PersTerrTo" type="text" />
+
+    <select asp-for="@Model.TerritoryId" asp-items="@Model.Territories"></select>
+
+    <button type="submit">перенести</button>
+</form>

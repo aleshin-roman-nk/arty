@@ -20,11 +20,13 @@ namespace Arty.Services
         {
             using (var db = appDbFactory.Create())
             {
+                //var res = db.Territories.ToList();
+                //res.Add(new Territory { Id = 0, Name = "-без территории-"});
                 return db.Territories.ToList();
             }
         }
 
-        public void Create(Territory t)
+		public void Create(Territory t)
         {
             using (var db = appDbFactory.Create())
             {

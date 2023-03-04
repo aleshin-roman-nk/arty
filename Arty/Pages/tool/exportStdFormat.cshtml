@@ -1,0 +1,71 @@
+﻿@page "{handler?}/{terrid?}"
+@model Arty.Pages.tool.exportStdFormatModel
+@{
+}
+
+<script>
+    function printDiv(divName) {
+        var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+
+        window.print();
+
+        document.body.innerHTML = originalContents;
+    }
+</script>
+
+
+@if (Model.mode == 0)
+{
+    <form method="post">
+        <select asp-for="@Model.TerrID" asp-items="@Model.Terrs"></select>
+        <button type="submit">выбрать</button>
+    </form>
+}
+else
+{
+    <input type="button" onclick="printDiv('printableArea')" value="печать" />
+    <div id="printableArea">
+
+        <div class="wrapperA4">
+
+            <div class="container">
+
+                @foreach (var item in Model.Coll)
+                {
+                    <div class="one-container">
+                        <div class="item-header">Участок @item.No</div>
+
+                        @for (int i = 0; i < 5; i++)
+                        {
+                            if (i < item.workers.Count())
+                            {
+                                <div class="item-title">@item.workers.ElementAt(i).name</div>
+                                <div class="item-left">@item.workers.ElementAt(i).start?.ToShortDateString()</div>
+                                <div class="item-right">@item.workers.ElementAt(i).finish?.ToShortDateString()</div>
+                            }
+                            else
+                            {
+                                <div class="item-title">&nbsp</div>
+                                <div class="item-left">&nbsp</div>
+                                <div class="item-right">&nbsp</div>
+                            }
+
+                        }
+
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+}
+
+

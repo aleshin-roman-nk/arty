@@ -4,19 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
 
-namespace Arty.Pages.area
+namespace Arty.Pages.personalTerritory
 {
 
 
     public class CreateModel : PageModel
     {
         AppDataDb _appDataDb;
-        AreaRepo pTerritoryRepo;
+        PTerritoryRepo pTerritoryRepo;
 
         public CreateModel()
         {
             _appDataDb = new AppDataDb(@"..\db\arty.db");
-            pTerritoryRepo = new AreaRepo(_appDataDb);
+            pTerritoryRepo = new PTerritoryRepo(_appDataDb);
         }
 
         public void OnGet()
@@ -32,14 +32,14 @@ namespace Arty.Pages.area
             //{
             //    err = "ERROR";
             //    ResultText = null;
-            //    return RedirectToPage("/area/create", "ParseResult", new { ferr = true, msg="ERROR. Text have not to be empty" });
+            //    return RedirectToPage("/personalTerritory/create", "ParseResult", new { ferr = true, msg="ERROR. Text have not to be empty" });
             //} 
             //else
             //{
             //    msg = "OK";
             //    ResultText = $"[parsed] {SourceText}";
 
-            //    return RedirectToPage("/area/create", "ParseResult", new { ferr = false, msg = "OK. Area is added" });
+            //    return RedirectToPage("/personalTerritory/create", "ParseResult", new { ferr = false, msg = "OK. Area is added" });
             //}
 
             if (string.IsNullOrEmpty(SourceText))

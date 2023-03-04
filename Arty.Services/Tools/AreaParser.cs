@@ -9,17 +9,6 @@ using System.Xml.Linq;
 
 namespace Arty.Services.Tools
 {
-    /*
-     * 1. Поместить в поле текста исходный текст участка
-     * 2. После преобразования вернуть результат
-     * 3. В ручную поправить текст
-     * 4. Нажать кнопку распарсить, создать объекты и ввести в бд.
-     * 5. Вывести результат операции: успешное выполнение (количество добавленых участков и их карточки), ошибки.
-     * 
-     * 
-     */
-
-
     public class AreaParser
     {
 
@@ -66,7 +55,7 @@ namespace Arty.Services.Tools
                 }
                 else // just addresses
                 {
-                    pTerritory.areaLines.Add(new AreaLine { data = line });
+                    pTerritory.areaLines.Add(new AreaLine { data = line.ToUpper() });
                 }
             }
 

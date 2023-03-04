@@ -1,5 +1,5 @@
 ﻿@page "{id}"
-@model Arty.Pages.area.detailModel
+@model Arty.Pages.personalTerritory.detailModel
 @{
 }
 
@@ -71,8 +71,7 @@
 
 </style>
 
-
-
+<a asp-page="/personalTerritory/index" asp-route-id="@Model.Area.territoryId" class="btn btn-outline-secondary p-1 m-1">назад</a>
 
 <div class="container">
     <div class="item">
@@ -127,7 +126,7 @@
     </div>
 
     <div class="item">
-        <a class = "btn btn-link" asp-page="/area/areainfo" asp-route-id="@Model.Area.Id">edit</a>
+        <a class = "btn btn-link" asp-page="/personalTerritory/areainfo" asp-route-id="@Model.Area.Id">информация</a>
         <p style="white-space: pre-line;">
             @Model.Area.info
         </p>
