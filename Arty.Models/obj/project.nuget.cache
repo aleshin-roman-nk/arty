@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sHrwhodrGLHeH3Ks/SjEk1PCvcs3NMOOSrdU53+UdeNNc1CBYg6UKTrAA8tRT4FBaowDwuu4kjMcGe4q26G7DQ==",
+  "dgSpecHash": "rvmGLtvx68gj0KGQ3/Y6DuM7OQ9JBLakVvVICcyXvt8MROvdQSbIVSvy7g3BUfNNHTAeZq0TjjqJZ9/gKIpOEA==",
   "success": true,
-  "projectFilePath": "d:\\prg\\arty\\Arty.Models\\Arty.Models.csproj",
+  "projectFilePath": "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

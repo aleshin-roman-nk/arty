@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\prg\\arty\\Arty.Models\\Arty.Models.csproj",
+      "projectUniqueName": "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj",
       "projectName": "Arty.Models",
-      "projectPath": "D:\\prg\\arty\\Arty.Models\\Arty.Models.csproj",
+      "projectPath": "D:\\prg\\Arty\\Arty.Models\\Arty.Models.csproj",
       "packagesPath": "C:\\Users\\alesh\\.nuget\\packages\\",
-      "outputPath": "D:\\prg\\arty\\Arty.Models\\obj\\",
+      "outputPath": "D:\\prg\\Arty\\Arty.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alesh\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
