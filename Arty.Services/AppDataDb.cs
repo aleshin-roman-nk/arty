@@ -35,5 +35,7 @@ namespace Arty.Services
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Territory> Territories { get; set; }
         public DbSet<AppProperty> AppProperties { get; set; }
+        public DbSet<StreetLine> StreetLines { get; set; }
+        public DbSet<Building> Buildings { get; set; }
     }
 }

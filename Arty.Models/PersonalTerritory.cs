@@ -12,8 +12,8 @@ namespace Arty.Models
         public int Id { get; set; }
         public string? Title { get; set; }// area number
 
-        public int? Number { get; set; }
-        public string? AreaType { get; set; }
+        public int? Number { get; set; }// номер участка
+        public string? AreaType { get; set; } // многоквартирки, частные, деловая
 
         public int? territoryId { get; set; }
         public string? territoryName { get; set; }

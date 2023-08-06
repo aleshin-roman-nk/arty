@@ -30,6 +30,26 @@ namespace Arty.Services
 			_streetFilter = null;
 		}
 
+		public int? NextPTerritoryNumber()
+		{
+            using (var db = appDbFactory.Create())
+			{
+				var number = db.PersonalTerritories.Max(t => t.Number);
+				number += 1;
+				return number;
+			}
+        }
+
+		public PersonalTerritory Create(PersonalTerritory o)
+		{
+            using (var db = appDbFactory.Create())
+			{
+				db.PersonalTerritories.Add(o);
+				db.SaveChanges();
+				return o;
+			}
+        }
+
 		public void CreateRange(IEnumerable<PersonalTerritory> areas)
 		{
 			using (var db = appDbFactory.Create())

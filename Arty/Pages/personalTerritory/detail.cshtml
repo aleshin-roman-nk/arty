@@ -3,6 +3,76 @@
 @{
 }
 
+<div class="container-lg">
+    <a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-outline-secondary p-1 m-1">назад</a>
+</div>
+
+<div class="container">
+    <div class="item">
+
+        <div class="card-deck">
+            <div class="card" style="border-color:#4C4C4C;">
+
+                <div style="display: flex">
+                    <h5 class="card-header">Номер участка : <b>@Model.personalTerritory.Number</b></h5>
+                    <a asp-page="/personalTerritory/createex" asp-page-handler="edit" asp-route-personalterritory="@Model.personalTerritory.Id" class="btn btn-outline-secondary ml-2">правка</a>
+                </div>
+
+                <h8 class="card-header"><b>@Model.personalTerritory.AreaType</b></h8>
+                <div class="card-body">
+                    <h6 class="card-title">@Model.personalTerritory.formula</h6>
+
+                    <ul class="list-group list-group-flush">
+
+                        @foreach (var arrd in Model.personalTerritory.areaLines)
+                        {
+                            <li class="list-group-item">@arrd.data</li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="item-scroll">
+
+        <div class="item-noborder">
+            <a asp-page="/worker/edit" asp-page-handler="create" asp-route-id="@Model.personalTerritory.Id" class="btn btn-link">Выдать</a>
+        </div>
+
+        @*<label for="start">Start date:</label>*@
+
+        @*        <input type="date" id="start" name="trip-start">*@
+
+        <div class="workercontainer">
+
+            @foreach (var worker in Model.Workers)
+            {
+                <div class="item-worker-title">
+                    <a asp-page="/worker/edit" asp-page-handler="edit" asp-route-id="@worker.id" class="btn btn-link">@worker.name</a>
+                </div>
+                <div class="item-start-work">@worker.start?.ToShortDateString()</div>
+                <div class="item-notcompleted-work">@worker.finish?.ToShortDateString()</div>
+
+                <div class="item-full"><hr /></div>
+            }
+
+        </div>
+
+
+    </div>
+
+    <div class="item">
+        <a class = "btn btn-link" asp-page="/personalTerritory/areainfo" asp-route-id="@Model.personalTerritory.Id">информация</a>
+        <p style="white-space: pre-line;">
+            @Model.personalTerritory.info
+        </p>
+    </div>
+
+</div>
+
 <style>
     .container {
         grid-template-columns: 450px 350px 350px;
@@ -69,67 +139,8 @@
         background-color: #EAF2F8;
     }
 
+    .container-head {
+        display: flex;
+    }
+
 </style>
-
-<a asp-page="/personalTerritory/index" asp-route-id="@Model.Area.territoryId" class="btn btn-outline-secondary p-1 m-1">назад</a>
-
-<div class="container">
-    <div class="item">
-
-        <div class="card-deck">
-            <div class="card" style="border-color:#4C4C4C;">
-                <h5 class="card-header">Номер участка : <b>@Model.Area.Number</b></h5>
-                <h8 class="card-header"><b>@Model.Area.AreaType</b></h8>
-                <div class="card-body">
-                    <h6 class="card-title">@Model.Area.formula</h6>
-
-                    <ul class="list-group list-group-flush">
-
-                        @foreach (var arrd in Model.Area.areaLines)
-                        {
-                            <li class="list-group-item">@arrd.data</li>
-                        }
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="item-scroll">
-
-        <div class="item-noborder">
-            <a asp-page="/worker/edit" asp-page-handler="create" asp-route-id="@Model.Area.Id" class="btn btn-link">Выдать</a>
-        </div>
-
-        @*<label for="start">Start date:</label>*@
-
-        @*        <input type="date" id="start" name="trip-start">*@
-
-        <div class="workercontainer">
-
-            @foreach (var worker in Model.Workers)
-            {
-                <div class="item-worker-title">
-                    <a asp-page="/worker/edit" asp-page-handler="edit" asp-route-id="@worker.id" class="btn btn-link">@worker.name</a>
-                </div>
-                <div class="item-start-work">@worker.start?.ToShortDateString()</div>
-                <div class="item-notcompleted-work">@worker.finish?.ToShortDateString()</div>
-
-                <div class="item-full"><hr /></div>
-            }
-
-        </div>
-
-
-    </div>
-
-    <div class="item">
-        <a class = "btn btn-link" asp-page="/personalTerritory/areainfo" asp-route-id="@Model.Area.Id">информация</a>
-        <p style="white-space: pre-line;">
-            @Model.Area.info
-        </p>
-    </div>
-
-</div>

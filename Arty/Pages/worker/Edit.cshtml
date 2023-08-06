@@ -29,21 +29,30 @@
 
 </style>
 
-<form method="post">
+<form method="post" id="form1">
     <div class="container">
         @if (Model.error != null)
         {
             <div class="item-label-title alert alert-danger">@Model.error</div>
-            <a asp-page="/personalTerritory/detail" asp-route-id="@Model.Worker.pterrID" class="btn btn-link">back</a>
-        }
-        else{
+            <a asp-page="/personalTerritory/detail" asp-route-id="@Model.Worker.pterrID" class="btn btn-link">назад</a>
+        } // Можем тоже так проверять, когда отправляем на сервер, подтвердить удаление. Подняв соответсвующий флаг.
+        // То есть вместо прямого удаление, в методе confirmDelete взводится флаг подтверждение
+        // При этом открывается блок подтверждения, где уже настоящая кнопка удалить.
+        // Или нажатие на удалить открывает красное окно и посылка DELETE с номером работника
+
+        /*
+        Однако сначала нужно проверить разрешение удалить.
+        Хотя если мы редактируем worker понятно что он существует и следовательно участко в работе или завершен.
+        */
+        else
+        {
 
             <input type="hidden" asp-for="@Model.Worker.pterrID" />
             <input type="hidden" asp-for="@Model.Worker.id" />
 
             <div class="item-label">Возвещатель</div>
             <div class="item-value">
-                <input asp-for="@Model.Worker.name" class="form-control" type="text">
+                <input asp-for="@Model.Worker.name" class="form-control" type="text" id="textPublisher">
             </div>
 
             <div class="item-label">Дата выдачи</div>
@@ -62,14 +71,67 @@
                 <button type="submit" class="btn btn-link">Save</button>
                 @if (Model.editMode == EntityEditMode.edit)
                 {
-                    <button type="submit" asp-page-handler="Delete" class="btn btn-outline-danger">Delete</button>
+@*                    <button type="submit" asp-page-handler="Delete" class="btn btn-outline-danger">Delete1</button>*@
+                    <a class="btn btn-outline-danger" id="openDeleting">Delete</a>
                 }
             </div>
 
+            <div class="item-label-title alert alert-danger" style="display: none;" id="modalDeleting">
+                <p class="item-label-title">Участок в работе не может быть просто так удален. Для подтверждения этого опасного действия напечатай "отменить запись"</p>
+
+                @*                    <a class="btn btn-outline-danger" id="deleteButton">Delete</a>*@
+                <button type="submit" asp-page-handler="Delete" class="btn btn-outline-danger">=></button>
+                <a class="btn btn-outline-secondary" id="cancelDeleting">закрыть</a>
+                <input class="form-control mt-2" type="text" id="textConfirmDel" asp-for="@Model.DeleteConfirmingText" />
+            </div>
         }
-
-
-
     </div>
 
 </form>
+
+<!-- 02-08-2023 experiments -->
+
+@section Scripts {
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var openModalButton = document.getElementById("openDeleting");
+            var closeModalButton = document.getElementById("cancelDeleting");
+            var modal = document.getElementById("modalDeleting");
+            var textConfirmDel = document.getElementById("textConfirmDel");
+
+            // When the trigger button is clicked, show the modal
+            openModalButton.addEventListener("click", function () {
+                textConfirmDel.value = "";
+                modal.style.display = "block";
+            });
+
+            // When the trigger button is clicked, show the modal
+            closeModalButton.addEventListener("click", function () {
+                modal.style.display = "none";
+            });
+
+        })
+
+        document.getElementById('form1').addEventListener('submit', function (event) {
+            // Get form elements
+            var nameInput = document.getElementById('textPublisher');
+
+            // Perform validation checks
+            var name = nameInput.value.trim();
+
+            if (name === '' || email === '') {
+                // If inputs are empty, prevent form submission
+                event.preventDefault();
+                alert('Имя должно быть не пустым');
+            }
+        });
+
+    </script>
+}
+
+@*@if(Model.askForDelete){
+    <div class="item-label-title alert alert-danger">do you want to delete?</div>
+
+}*@
+

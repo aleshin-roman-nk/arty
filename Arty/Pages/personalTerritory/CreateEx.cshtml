@@ -1,0 +1,51 @@
+﻿@*@page "{handler}/{terrid?}"*@
+@page "{handler}"
+@model Arty.Pages.personalTerritory.CreateExModel
+@{
+}
+
+<div class="container-lg mt-5">
+	<!-- Back Button -->
+	@if (Model.mode == Model.modeCreating)
+	{
+		<div class="text-right mb-3">
+			<a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-secondary">назад</a>
+			<p>Участок : @Model.personalTerritory.Number</p>
+			<form method="post" asp-page-handler="create">
+				<input type="hidden" asp-for="@Model.personalTerritory.Number">
+				<input type="hidden" asp-for="@Model.mode">
+				<input type="hidden" asp-for="@Model.personalTerritory.territoryId">
+				<button type="submit" class="btn btn-primary mt-2">создать</button>
+			</form>
+		</div>
+	}
+	else if (Model.mode == Model.modeEditing)
+	{
+		<!-- Form -->
+		<div class="row justify-content-center">
+			<div class="col-lg-6">
+				<a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-secondary">назад</a>
+				<p>Участок : @Model.personalTerritory.Number</p>
+				<form method="post">
+
+					<input type="hidden" asp-for="@Model.personalTerritory.territoryId">
+					<input type="hidden" asp-for="@Model.personalTerritory.Id">
+
+					<div class="form-group">
+						<label for="inputName">Адресная строка</label>
+						<input type="text" class="form-control" id="inputName" placeholder="Enter your name">
+					</div>
+
+					<button asp-page-handler="address" type="submit" class="btn btn-primary mt-2">adr</button>
+					<button asp-page-handler="building" type="submit" class="btn btn-primary mt-2">bld</button>
+
+				</form>
+			</div>
+		</div>
+
+	}
+
+
+
+
+</div>
