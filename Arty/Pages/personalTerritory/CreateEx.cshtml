@@ -4,6 +4,12 @@
 @{
 }
 
+<link rel="stylesheet" href="/css/modal-script.css">
+
+
+
+<!--=======================================-->
+
 <div class="container-lg mt-5">
 	<!-- Back Button -->
 	@if (Model.mode == Model.modeCreating)
@@ -21,31 +27,60 @@
 	}
 	else if (Model.mode == Model.modeEditing)
 	{
-		<!-- Form -->
-		<div class="row justify-content-center">
-			<div class="col-lg-6">
-				<a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-secondary">назад</a>
-				<p>Участок : @Model.personalTerritory.Number</p>
-				<form method="post">
+		<div class="flex">
+			<a asp-page="/personalTerritory/detail" asp-route-id="@Model.personalTerritory.Id" class="btn btn-secondary">назад</a>
+			<button class="btn btn-outline-secondary" id="openModalBtn">добавить</button>
+		</div>
 
-					<input type="hidden" asp-for="@Model.personalTerritory.territoryId">
-					<input type="hidden" asp-for="@Model.personalTerritory.Id">
+		<h2>Участок : @Model.personalTerritory.Number</h2>
 
-					<div class="form-group">
-						<label for="inputName">Адресная строка</label>
-						<input type="text" class="form-control" id="inputName" placeholder="Enter your name">
+		<!-- Add street form -->
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+
+
+				<!-- Form -->
+				<div class="row justify-content-center">
+					<div class="col-lg-6">
+						<form method="post">
+
+							<input type="hidden" asp-for="@Model.personalTerritory.territoryId">
+							<input type="hidden" asp-for="@Model.personalTerritory.Id">
+
+							<div class="form-group">
+								<label for="inputName">Улица</label>
+								<input type="text" class="form-control" name="streetName" placeholder="Enter street">
+								<button asp-page-handler="address" type="submit" class="btn btn-primary mt-2">ок</button>
+							</div>
+
+@*                            <button asp-page-handler="address" type="submit" class="btn btn-primary mt-2">adr</button>
+							<button asp-page-handler="building" type="submit" class="btn btn-primary mt-2">bld</button>*@
+
+						</form>
 					</div>
+				</div>
 
-					<button asp-page-handler="address" type="submit" class="btn btn-primary mt-2">adr</button>
-					<button asp-page-handler="building" type="submit" class="btn btn-primary mt-2">bld</button>
-
-				</form>
 			</div>
 		</div>
 
+		@foreach (var item in Model.personalTerritory.pterrLines)
+		{
+			<a class="btn btn-link m-1" asp-page="/personalTerritory/streetLine/edit" asp-route-id="@item.id"><b>@item.address</b></a>
+
+			<br>
+			@foreach (var line in item.BusinessPoints)
+			{
+				<p>@line.name</p>
+			}
+		}
+
+		<!-- Для каждой части своя form со своей кнопкой.
+			Для StreetLine своя form
+			Для Building своя form
+		-->
 	}
 
-
-
-
 </div>
+
+<script src="/js/modal-script.js"></script>

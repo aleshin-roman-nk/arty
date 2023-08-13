@@ -1,0 +1,110 @@
+﻿@page "{id}"
+@model Arty.Pages.personalTerritory.streetLine.EditModel
+@{
+}
+
+<link rel="stylesheet" href="/css/modal-script.css">
+
+<div class="container-lg border border-2">
+	<a class="btn btn-link" asp-page="/personalTerritory/createex" asp-page-handler="edit" , asp-route-personalterritory="@Model.pterrLine.PersonalTerritoryId">назад</a>
+	<div class="row border border-1 p-2">
+
+@*        street line edit : @Model.id*@
+		<hr />
+@*        @Model.areaLine.data*@
+
+		<form method="post">
+			<input type="hidden" asp-for="@Model.pterrLine.PersonalTerritoryId">
+			<input type="hidden" asp-for="@Model.pterrLine.id">
+
+			<label asp-for="@Model.pterrLine.address">Адресс</label>
+			<input asp-for="@Model.pterrLine.address" type="text" class="form-control" />
+
+@*			<label asp-for="@Model.areaLine.objects">Объекты</label>
+			<input asp-for="@Model.areaLine.objects" type="text" class="form-control" />*@
+
+			<button type="submit" class="btn btn-primary mt-2">сохранить</button>
+		</form>
+
+		<form method="post">
+			<input type="hidden" asp-for="@Model.pterrLine.id">
+
+			<label asp-for="@Model.pterrLine.objects">Новый объект</label>
+			<input type="text" class="form-control" name="busnPointName" placeholder="введи имя объекта" />
+
+			<button asp-page-handler="AddBusinessPoint" type="submit" class="btn btn-primary mt-2">добавить</button>
+		</form>
+
+		<!-- Список объектов -->
+		<div class="border-1">
+			<h2>Деловые объекты</h2>
+			@foreach (var item in Model.pterrLine.BusinessPoints)
+			{
+				@*<p>@item.name <button class="btn btn-outline-secondary" id="openModalBtn">e</button></p>*@
+				<p>@item.name 
+					<button class="btn btn-outline-secondary" onclick="startModal('@item.id', '@item.name')">e</button>
+				</p>
+			}
+		</div>
+
+	</div>
+</div>
+
+<!-- Add business point form -->
+<div id="myModal" class="modal">
+	<div class="modal-content">
+		<span class="close">&times;</span>
+
+
+		<!-- Form -->
+		<div class="row justify-content-center">
+			<div class="col-lg-6">
+				<form method="post">
+
+					<input type="hidden" asp-for="@Model.id">
+
+					<!-- Скрипт записывает сюда id businessPoint -->
+					<input type="hidden" name="bpId" id="bpIdText">
+
+					<div class="form-group">
+						<label for="streetName">Бизнесс объект</label>
+						<input type="text" class="form-control" id="bpNameText" name="bpName" placeholder="введите имя объекта">
+						<button asp-page-handler="UpdateBusinessPoint" type="submit" class="btn btn-primary mt-2">ок</button>
+						<button asp-page-handler="DeleteBusinessPoint" type="submit" class="btn btn-danger mt-2">delete</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+
+	//const openModalBtn = document.getElementById("openModalBtn");
+	const modal = document.getElementById("myModal");
+	const closeButton = document.querySelector(".close");
+
+	//openModalBtn.addEventListener("click", () => {
+	//	modal.style.display = "block";
+	//});
+
+	closeButton.addEventListener("click", () => {
+		modal.style.display = "none";
+	});
+
+	window.addEventListener("click", (event) => {
+		if (event.target === modal) {
+			modal.style.display = "none";
+		}
+	});
+
+	function startModal(bpId, oldName){
+		const bpIdText = document.getElementById("bpIdText")
+		const bpNameText = document.getElementById("bpNameText")
+		bpIdText.value = bpId
+		bpNameText.value = oldName
+		modal.style.display = "block"
+	}
+</script>

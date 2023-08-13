@@ -3,144 +3,191 @@
 @{
 }
 
-<div class="container-lg">
-    <a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-outline-secondary p-1 m-1">назад</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<div class="container-lg mb-1">
+	<a asp-page="/personalTerritory/index" asp-route-id="@Model.personalTerritory.territoryId" class="btn btn-outline-secondary">назад</a>
+	<a asp-page="/personalTerritory/createex" asp-page-handler="edit" asp-route-personalterritory="@Model.personalTerritory.Id" class="btn btn-outline-secondary ml-2">правка</a>
+	<a id="captureBtn" class="btn btn-outline-secondary ml-2">копировать</a>
 </div>
 
 <div class="container">
-    <div class="item">
+	<div class="item cardToCopy">
 
-        <div class="card-deck">
-            <div class="card" style="border-color:#4C4C4C;">
+		<div class="card-deck">
+			<div class="card" style="border-color:#4C4C4C;">
 
-                <div style="display: flex">
-                    <h5 class="card-header">Номер участка : <b>@Model.personalTerritory.Number</b></h5>
-                    <a asp-page="/personalTerritory/createex" asp-page-handler="edit" asp-route-personalterritory="@Model.personalTerritory.Id" class="btn btn-outline-secondary ml-2">правка</a>
-                </div>
+				<h5 class="card-header">Номер участка : <b>@Model.personalTerritory.Number</b></h5>
 
-                <h8 class="card-header"><b>@Model.personalTerritory.AreaType</b></h8>
-                <div class="card-body">
-                    <h6 class="card-title">@Model.personalTerritory.formula</h6>
+				@if (!string.IsNullOrEmpty(Model.personalTerritory.AreaType))
+				{
+					<h8 class="card-header"><b>@Model.personalTerritory.AreaType</b></h8>					
+				}
 
-                    <ul class="list-group list-group-flush">
+				<div class="card-body">
+					<h6 class="card-title">@Model.personalTerritory.formula</h6>
 
-                        @foreach (var arrd in Model.personalTerritory.areaLines)
-                        {
-                            <li class="list-group-item">@arrd.data</li>
-                        }
-                    </ul>
+					<ul class="list-group list-group-flush">
 
-                </div>
-            </div>
-        </div>
+						@foreach (var arrd in Model.personalTerritory.pterrLines)
+						{
+							@*                            <li class="list-group-item">@arrd.address @if(!string.IsNullOrEmpty(arrd.objects))
+						{
+						<br><span>[@arrd.objects]</span>
+						}
+						</li>*@
+							<li class="list-group-item">
+                                <h5>@arrd.address</h5>
 
-    </div>
+								@if(arrd.BusinessPoints.Count() > 0)
+								{
+									foreach (var bp in arrd.BusinessPoints)
+									{
+										<p>@bp.name</p>
+									}
+								}
+							</li>
+						}
+					</ul>
 
-    <div class="item-scroll">
+				</div>
+			</div>
+		</div>
 
-        <div class="item-noborder">
-            <a asp-page="/worker/edit" asp-page-handler="create" asp-route-id="@Model.personalTerritory.Id" class="btn btn-link">Выдать</a>
-        </div>
+	</div>
 
-        @*<label for="start">Start date:</label>*@
+	<div class="item-scroll">
 
-        @*        <input type="date" id="start" name="trip-start">*@
+		<div class="item-noborder">
+			<a asp-page="/worker/edit" asp-page-handler="create" asp-route-id="@Model.personalTerritory.Id" class="btn btn-link">Выдать</a>
+		</div>
 
-        <div class="workercontainer">
+		@*<label for="start">Start date:</label>*@
 
-            @foreach (var worker in Model.Workers)
-            {
-                <div class="item-worker-title">
-                    <a asp-page="/worker/edit" asp-page-handler="edit" asp-route-id="@worker.id" class="btn btn-link">@worker.name</a>
-                </div>
-                <div class="item-start-work">@worker.start?.ToShortDateString()</div>
-                <div class="item-notcompleted-work">@worker.finish?.ToShortDateString()</div>
+		@*        <input type="date" id="start" name="trip-start">*@
 
-                <div class="item-full"><hr /></div>
-            }
+		<div class="workercontainer">
 
-        </div>
+			@foreach (var worker in Model.Workers)
+			{
+				<div class="item-worker-title">
+					<a asp-page="/worker/edit" asp-page-handler="edit" asp-route-id="@worker.id" class="btn btn-link">@worker.name</a>
+				</div>
+				<div class="item-start-work">@worker.start?.ToShortDateString()</div>
+				<div class="item-notcompleted-work">@worker.finish?.ToShortDateString()</div>
+
+				<div class="item-full"><hr /></div>
+			}
+
+		</div>
 
 
-    </div>
+	</div>
 
-    <div class="item">
-        <a class = "btn btn-link" asp-page="/personalTerritory/areainfo" asp-route-id="@Model.personalTerritory.Id">информация</a>
-        <p style="white-space: pre-line;">
-            @Model.personalTerritory.info
-        </p>
-    </div>
+	<div class="item">
+		<a class="btn btn-link" asp-page="/personalTerritory/areainfo" asp-route-id="@Model.personalTerritory.Id">информация</a>
+		<p style="white-space: pre-line;">
+			@Model.personalTerritory.info
+		</p>
+	</div>
 
 </div>
 
 <style>
-    .container {
-        grid-template-columns: 450px 350px 350px;
-        display: grid;
-        grid-gap: 10px;
-    }
+	.container {
+		grid-template-columns: 450px 350px 350px;
+		display: grid;
+		grid-gap: 10px;
+	}
 
-    .workercontainer {
-        grid-template-columns: 150px 150px;
-        display: grid;
-        grid-gap: 1px;
-    }
+	.workercontainer {
+		grid-template-columns: 150px 150px;
+		display: grid;
+		grid-gap: 1px;
+	}
 
-    .item {
-        padding: 10px;
-        border: 1px solid black;
-    }
+	.item {
+		padding: 10px;
+		border: 1px solid black;
+	}
 
-    .item-scroll {
-        padding: 10px;
-        border: 1px solid black;
-        overflow: scroll;
-    }
+	.item-scroll {
+		padding: 10px;
+		border: 1px solid black;
+		overflow: scroll;
+	}
 
-    .item-noborder {
-        padding: 10px;
-        /*border: 1px solid black;*/
-    }
+	.item-noborder {
+		padding: 10px;
+		/*border: 1px solid black;*/
+	}
 
-    .item-start-work {
-        padding: 2px;
-        border: 1px solid black;
-        text-align: center;
-        background-color: #67E667;
-    }
+	.item-start-work {
+		padding: 2px;
+		border: 1px solid black;
+		text-align: center;
+		background-color: #67E667;
+	}
 
-    .item-finish-work {
-        padding: 2px;
-        border: 1px solid black;
-        text-align: center;
-        background-color: #33CCCC;
-    }
+	.item-finish-work {
+		padding: 2px;
+		border: 1px solid black;
+		text-align: center;
+		background-color: #33CCCC;
+	}
 
-    .item-notcompleted-work {
-        padding: 2px;
-        border: 1px solid black;
-        text-align: center;
-        background-color: #F9E79F;
-    }
+	.item-notcompleted-work {
+		padding: 2px;
+		border: 1px solid black;
+		text-align: center;
+		background-color: #F9E79F;
+	}
 
-    .item-full {
-        /*padding: 10px;*/
-        /*border: 1px solid black;*/
-        grid-column-start: 1;
-        grid-column-end: 3;
-    }
+	.item-full {
+		/*padding: 10px;*/
+		/*border: 1px solid black;*/
+		grid-column-start: 1;
+		grid-column-end: 3;
+	}
 
-    .item-worker-title {
-        padding: 2px;
-        border: 1px solid black;
-        text-align: center;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        background-color: #EAF2F8;
-    }
+	.item-worker-title {
+		padding: 2px;
+		border: 1px solid black;
+		text-align: center;
+		grid-column-start: 1;
+		grid-column-end: 3;
+		background-color: #EAF2F8;
+	}
 
-    .container-head {
-        display: flex;
-    }
+	.container-head {
+		display: flex;
+	}
 
 </style>
+
+
+<script>
+	document.getElementById("captureBtn").addEventListener("click", function () {
+		captureCard();
+	});
+
+	async function captureCard() {
+		const cardElement = document.querySelector(".cardToCopy");
+
+		const canvas = await html2canvas(cardElement);
+
+		// Convert canvas to Blob
+		canvas.toBlob(function (blob) {
+
+			// Use the Clipboard API to copy the Blob
+			navigator.clipboard.write([
+				new ClipboardItem({
+					[blob.type]: blob
+				})
+			]);
+
+		});
+
+		alert("Скопировано")
+	}
+</script>

@@ -55,7 +55,7 @@ namespace Arty.Services.Tools
                 }
                 else // just addresses
                 {
-                    pTerritory.areaLines.Add(new AreaLine { data = line.ToUpper() });
+                    pTerritory.pterrLines.Add(new PTerritoryLine { address = line.ToUpper() });
                 }
             }
 
@@ -219,7 +219,7 @@ namespace Arty.Services.Tools
                 else if (item.StartsWith("[d]"))
                 {
                     //current.data.Add(item.Substring("[d]".Length, item.Length - "[d]".Length).Trim());
-                    current.areaLines.Add(new AreaLine { data = item.Substring("[d]".Length, item.Length - "[d]".Length).Trim()});
+                    current.pterrLines.Add(new PTerritoryLine { address = item.Substring("[d]".Length, item.Length - "[d]".Length).Trim()});
                 }
             }
 

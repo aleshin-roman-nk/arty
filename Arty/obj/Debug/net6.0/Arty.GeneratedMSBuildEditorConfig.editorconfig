@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGVyc29uYWxUZXJyaXRvcnlcaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/prg/Arty/Arty/Pages/personalTerritory/streetLine/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGVyc29uYWxUZXJyaXRvcnlcc3RyZWV0TGluZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/prg/Arty/Arty/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

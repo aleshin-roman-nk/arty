@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lM4bkp2qDE33NHx2RnrE/auXbseX34UqpmDsWn6ZANA=",
+  "Hash": "VrJnR9dNWJjujeKiiOFnGYfemMET6cER2WQ5RO9uKfE=",
   "Source": "Arty",
   "BasePath": "_content/Arty",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\prg\\Arty\\Arty\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Arty.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\prg\\Arty\\Arty\\wwwroot\\css\\modal-script.css",
+      "SourceId": "Arty",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\prg\\Arty\\Arty\\wwwroot\\",
+      "BasePath": "_content/Arty",
+      "RelativePath": "css/modal-script.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\modal-script.css"
     },
     {
       "Identity": "D:\\prg\\Arty\\Arty\\wwwroot\\css\\site.css",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\prg\\Arty\\Arty\\wwwroot\\js\\modal-script.js",
+      "SourceId": "Arty",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\prg\\Arty\\Arty\\wwwroot\\",
+      "BasePath": "_content/Arty",
+      "RelativePath": "js/modal-script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\modal-script.js"
     },
     {
       "Identity": "D:\\prg\\Arty\\Arty\\wwwroot\\js\\site.js",

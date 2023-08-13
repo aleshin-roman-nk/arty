@@ -27,8 +27,7 @@ namespace Arty.Models
 
         //public List<string> data { get; set; } = new List<string>(); 
 
-        public List<AreaLine> areaLines { get; set; } = new List<AreaLine>();
-
+        public List<PTerritoryLine> pterrLines { get; set; } = new List<PTerritoryLine>();
 
         public string? info { get; set; }
         public string? total { get; set; }

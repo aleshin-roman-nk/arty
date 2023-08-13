@@ -6,12 +6,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Arty.Services
 {
 	public class PTerritoryRepo
 	{
 		private readonly IAppDbFactory appDbFactory;
+
+		//private readonly AppDataDb db;
 
 		private string? _streetFilter = null;
 
@@ -32,23 +35,23 @@ namespace Arty.Services
 
 		public int? NextPTerritoryNumber()
 		{
-            using (var db = appDbFactory.Create())
+			using (var db = appDbFactory.Create())
 			{
 				var number = db.PersonalTerritories.Max(t => t.Number);
 				number += 1;
 				return number;
 			}
-        }
+		}
 
 		public PersonalTerritory Create(PersonalTerritory o)
 		{
-            using (var db = appDbFactory.Create())
+			using (var db = appDbFactory.Create())
 			{
 				db.PersonalTerritories.Add(o);
 				db.SaveChanges();
 				return o;
 			}
-        }
+		}
 
 		public void CreateRange(IEnumerable<PersonalTerritory> areas)
 		{
@@ -111,7 +114,7 @@ namespace Arty.Services
 			using (var db = appDbFactory.Create())
 			{
 				return db.PersonalTerritories
-					.Include(x => x.areaLines)
+					.Include(x => x.pterrLines)
 					.Include(x => x.Worker)
 					.Where(pt => pt.territoryId == areaId && !db.Workers.Any(wrk => wrk.pterrID == pt.Id)).ToList();
 			}
@@ -122,7 +125,7 @@ namespace Arty.Services
 			using (var db = appDbFactory.Create())
 			{
 				return db.PersonalTerritories
-					.Include(x => x.areaLines)
+					.Include(x => x.pterrLines)
 					.Include(x => x.Worker)
 					.Where(pt => pt.territoryId == areaId && db.Workers.Any(wrk => wrk.pterrID == pt.Id)).ToList();
 			}
@@ -132,7 +135,11 @@ namespace Arty.Services
 		{
 			using (var db = appDbFactory.Create())
 			{
-				return db.PersonalTerritories.Include(x => x.areaLines).Include(x => x.Worker).Where(x => x.territoryId == terrId).ToList();
+				return db.PersonalTerritories
+					.Include(x => x.pterrLines)
+					.Include(x => x.Worker)
+					.Where(x => x.territoryId == terrId)
+					.ToList();
 			}
 		}
 
@@ -146,14 +153,14 @@ namespace Arty.Services
 				if (terrId != 0)
 				{
 					res = db.PersonalTerritories
-						.Include(x => x.areaLines)
+						.Include(x => x.pterrLines)
 						.Include(x => x.Worker)
 						.Where(pt => pt.territoryId == terrId);
 				}
 				else
 				{
 					res = db.PersonalTerritories
-						.Include(x => x.areaLines)
+						.Include(x => x.pterrLines)
 						.Include(x => x.Worker)
 						.Where(pt => pt.territoryId == null || pt.territoryId == 0);
 				};
@@ -170,7 +177,7 @@ namespace Arty.Services
 				if (!string.IsNullOrEmpty(strtFltr))
 				{
 					res = res.Where(x => db.Lines.Any(l => l.PersonalTerritoryId == x.Id
-					&& EF.Functions.Like(l.data, $"%{strtFltr.ToUpper()}%")));
+					&& EF.Functions.Like(l.address, $"%{strtFltr.ToUpper()}%")));
 				}
 
 				return res.ToList();
@@ -216,12 +223,113 @@ namespace Arty.Services
 			}
 		}
 
-		public PersonalTerritory? Get(int id)
+		public void AddBusinessPoint(int pTerrLineId, string bpName)
 		{
 			using (var db = appDbFactory.Create())
 			{
-				return db.PersonalTerritories.Include(x => x.areaLines).Include(x => x.Worker).FirstOrDefault(x => x.Id == id);
+				db.BusinessPoints.Add(new BusinessPoint { name = bpName, PTerritoryLineId = pTerrLineId });
+				db.SaveChanges();
 			}
+		}
+
+		public void UpdateBusinessPoint(int id, string newname)
+		{
+			using (var db = appDbFactory.Create())
+			{
+				var o = db.BusinessPoints.FirstOrDefault(x => x.id == id);
+
+				if (o == null) return;
+
+				o.name = newname;
+
+				db.Entry(o).Property(x => x.name).IsModified = true;
+				db.SaveChanges();
+			}
+		}
+
+		public void DeleteBusinessPoint(int id)
+		{
+			var o = new BusinessPoint { id = id };
+
+			using (var db = appDbFactory.Create())
+			{
+				db.BusinessPoints.Remove(o);
+				db.SaveChanges();
+			}
+
+		}
+
+		public PersonalTerritory? Get(int id)
+		{
+            using (var db = appDbFactory.Create())
+			{
+				return db.PersonalTerritories
+					.Include(x => x.pterrLines)
+					.ThenInclude(x => x.BusinessPoints)
+					.Include(x => x.Worker)
+					.FirstOrDefault(x => x.Id == id);
+			}
+		}
+
+		public IEnumerable<StreetLine> GetStreetLines(int pterrId)
+		{
+			using (var db = appDbFactory.Create())
+			{
+				return db.StreetLines.Include(x => x.Buildings).ToArray();
+			}
+		}
+
+		public void AddOldLine(int pterrId, string str)
+		{
+			using (var db = appDbFactory.Create())
+			{
+				db.Lines.Add(new PTerritoryLine { PersonalTerritoryId = pterrId, address = str });
+				db.SaveChanges();
+			}
+		}
+
+		public void UpdateOldLine(int pterrLineId, string newaddress, string newobjects)
+		{
+			using (var db = appDbFactory.Create())
+			{
+				var o = db.Lines.FirstOrDefault(x => x.id == pterrLineId);
+
+				if (o == null) return;
+
+				bool save = false;
+
+				if(!string.IsNullOrEmpty(newaddress))
+				{
+					o.address = newaddress.ToUpper();
+					db.Entry(o).Property(x => x.address).IsModified = true;
+					save = true;
+				}
+
+				if(!string.IsNullOrEmpty(newobjects))
+				{
+					o.objects = newobjects.ToUpper();
+					db.Entry(o).Property(x => x.objects).IsModified = true;
+					save = true;
+				}
+
+				if (save)
+					db.SaveChanges();
+			}
+		}
+
+		public PTerritoryLine? GetOldLine(int lineId)
+		{
+			using (var db = appDbFactory.Create())
+			{
+				return db.Lines
+					.Include(x => x.BusinessPoints)
+					.FirstOrDefault(x => x.id == lineId);
+			}
+		}
+
+		public void AddStreetLine(int pterrId/*, string str*/)
+		{
+
 		}
 
 		public void AttachRange(int frNumber, int toNumber, Territory t)

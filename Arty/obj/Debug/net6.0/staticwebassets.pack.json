@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Arty.bundle.scp.css"
     },
     {
+      "Id": "D:\\prg\\Arty\\Arty\\wwwroot\\css\\modal-script.css",
+      "PackagePath": "staticwebassets\\css\\modal-script.css"
+    },
+    {
       "Id": "D:\\prg\\Arty\\Arty\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -15,6 +19,10 @@
     {
       "Id": "D:\\prg\\Arty\\Arty\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\prg\\Arty\\Arty\\wwwroot\\js\\modal-script.js",
+      "PackagePath": "staticwebassets\\js\\modal-script.js"
     },
     {
       "Id": "D:\\prg\\Arty\\Arty\\wwwroot\\js\\site.js",

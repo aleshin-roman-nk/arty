@@ -31,11 +31,12 @@ namespace Arty.Services
         }
 
         public DbSet<PersonalTerritory> PersonalTerritories { get; set; }
-        public DbSet<AreaLine> Lines { get; set; }
+        public DbSet<PTerritoryLine> Lines { get; set; }
         public DbSet<Worker> Workers { get; set; }
         public DbSet<Territory> Territories { get; set; }
         public DbSet<AppProperty> AppProperties { get; set; }
         public DbSet<StreetLine> StreetLines { get; set; }
         public DbSet<Building> Buildings { get; set; }
+        public DbSet<BusinessPoint> BusinessPoints { get; set; }
     }
 }

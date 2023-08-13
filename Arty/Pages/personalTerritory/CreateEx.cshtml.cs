@@ -32,6 +32,7 @@ namespace Arty.Pages.personalTerritory
 		{
 			mode = modeEditing;
 			personalTerritory = personalTerrRepo.Get(personalterritory);
+			streetLines = personalTerrRepo.GetStreetLines(personalterritory);
 		}
 
 		public IActionResult OnPostCreate()
@@ -41,15 +42,14 @@ namespace Arty.Pages.personalTerritory
             return RedirectToPage("/personalTerritory/createex", new { handler="edit", personalterritory = personalTerritory.Id });
 		}
 
-		public IActionResult OnPostAddress()
+		public IActionResult OnPostAddress(string streetName)
 		{
-			Console.WriteLine("OnPostAddress");
+			personalTerrRepo.AddOldLine(personalTerritory.Id, streetName);
 			return RedirectToPage("/personalTerritory/createex", new { handler = "edit", personalterritory = personalTerritory.Id });
 		}
 
 		public IActionResult OnPostBuilding()
 		{
-			Console.WriteLine("OnPostBuilding");
 			return RedirectToPage("/personalTerritory/createex", new { handler = "edit", personalterritory = personalTerritory.Id });
 		}
 
@@ -58,5 +58,8 @@ namespace Arty.Pages.personalTerritory
 
 		[BindProperty]
 		public int mode { get; set;}
+
+		[BindProperty]
+		public IEnumerable<StreetLine> streetLines { get; set; }
 	}
 }

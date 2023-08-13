@@ -1,0 +1,3 @@
+d:\app\Arty.Models.dll
+d:\app\Arty.Models.deps.json
+d:\app\Arty.Models.pdb

@@ -22,7 +22,7 @@ namespace Arty.Services
 				var l = db.Lines.ToArray();
 				foreach (var item in l)
 				{
-					item.data = item.data.ToUpper();
+					item.address = item.address.ToUpper();
 				}
 				db.SaveChanges();
 			}

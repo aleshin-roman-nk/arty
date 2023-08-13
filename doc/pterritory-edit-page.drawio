@@ -1,0 +1,28 @@
+<mxfile host="Electron" modified="2023-08-08T10:46:14.944Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" etag="RjgVEG52VqxVJlIu2S0Z" version="21.6.5" type="device">
+  <diagram name="Page-1" id="0NSJ9R2DLm5yVBtB-7W3">
+    <mxGraphModel dx="792" dy="699" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-1" value="Участок 123" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-2" value="дома на 2 и 7" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="150" y="70" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-3" value="многоэтажки" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="20" y="70" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-4" value="УЛ МОЛОДЕЖНАЯ 2, 12, 22, 7, 17" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="20" y="100" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-8" value="e" style="rounded=0;whiteSpace=wrap;html=1;align=center;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="405" y="100" width="20" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="nNKbHLS8LmsJTbXpUhfo-9" value="d" style="rounded=0;whiteSpace=wrap;html=1;align=center;spacingLeft=4;spacingRight=4;" vertex="1" parent="1">
+          <mxGeometry x="430" y="100" width="20" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

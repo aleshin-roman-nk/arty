@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM to Image Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+</head>
+<body>
+    <div class="card">
+        <h2>Card Title</h2>
+        <p>This is a sample card with some content. You can customize the content as needed.</p>
+        <img src="image.jpg" alt="Card Image">
+        <button>Click Me</button>
+    </div>
+    <button id="captureBtn">Capture Card as Image</button>
+    <img id="capturedImage" style="display: none;">
+    
+    <script>
+        document.getElementById("captureBtn").addEventListener("click", function () {
+            captureCard();
+        });
+
+        function captureCard() {
+            const cardElement = document.querySelector(".card");
+            const capturedImage = document.getElementById("capturedImage");
+
+            domtoimage.toPng(cardElement)
+                .then(function (dataUrl) {
+                    capturedImage.src = dataUrl;
+                    capturedImage.style.display = "block";
+                })
+                .catch(function (error) {
+                    console.error("Error capturing card:", error);
+                });
+        }
+    </script>
+</body>
+</html>
